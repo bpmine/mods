@@ -2,6 +2,8 @@
 
 domotic={}
 
+print("Load domotic mod")
+
 msgBridge.send({typ='chat',msg='Start of minetest domotic MOD'})
 
 function domotic.sendChat(message)
