@@ -1,4 +1,16 @@
-
+-- MOD DOMOTIC
+--
+-- This module offers an API to access to domotic functions of our home
+--
+-- domotic.hue.set: Set a Hue light
+--
+-- domotic.chat.send: Send a message (like a chat)
+-- domotic.chat.register_on_msg: Register a callback to manage incoming messages
+--
+-- domotic.tour.setLeds: Set LEDs of cat's tower
+-- domotic.tour.setHaut: set roof LEDs
+-- domotic.tour.setBas: set inside LEDs
+--
 
 domotic={}
 
@@ -6,22 +18,34 @@ print("Load domotic mod")
 
 msgBridge.send({typ='chat',msg='Start of minetest domotic MOD'})
 
-function domotic.sendChat(message)
+domotic.chat={}
+function domotic.chat.send(message)
 	msgBridge.send({typ='chat',msg=message})
 end
 
-local listCB={}
-function domotic.register_on_chat(callback)
-	table.insert(listCB,callback)
+local listCbsChat={}
+function domotic.chat.register_on_msg(callback)
+	table.insert(listCbsChat,callback)
 end
 
+domotic.hue={}
+function domotic.hue.set(name,state)
 
-function domotic.setHue(name,state)
+	print("set hue: " .. name .. ": " .. tostring(state))
+
 	if (state==true) then
 		msgBridge.send({typ='hue',name=name,cmd='on'})
 	else
-		msgBridge.send({typ='hue',name=name,cmd='on'})
+		msgBridge.send({typ='hue',name=name,cmd='off'})
 	end
+end
+
+function domotic.hue.on(name)
+	domotic.hue.set(name,true)
+end
+
+function domotic.hue.off(name)
+	domotic.hue.set(name,false)
 end
 
 domotic.tour={}
@@ -38,19 +62,20 @@ function domotic.tour.setBas(col)
 end
 
 
+local cbMsgsReception=function(msgs)
+	
+	for i,m in pairs(msgs) do
+		local event=minetest.parse_json(m.msg)
 
-minetest.register_on_chat_message(function(name, message)
-	domotic.sendChat(message)
-	return false
-end)
+		if event.typ=="chat" then
+			if event.dst~=nil and event.msg~=nil then
+				for cb in listCbsChat do
+					cb(event.dst,event.msg)
+				end
+			end	
+		end
 
-
-minetest.register_on_dignode(function(pos, oldnode, digger)
-
-end)
-
-
-minetest.register_on_placenode(function(pos, newnode, placer, oldnode, itemstack, pointed_thing)
-
-end)
+	end
+end	
+	
 

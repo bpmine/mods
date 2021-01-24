@@ -20,6 +20,10 @@
 -- The callers must use the global msgBridge variable to access to api
 -- All mods that uses this mod must indicate it as a dependance to force it to be loaded first
 --
+-- Functions:
+--
+--   - msgBridge.send: Sends a message
+--   - msgBridge.register_on_msgs: Register a callback to manage messages list reception
 --
 
 if msgBridge~=nil then
@@ -46,7 +50,7 @@ function msgBridge.send(msg)
 
 end
 
-function msgBridge.poll()
+local function poll()
 	if (_http==nil) then
 		error("ERROR _http is NIL")
 	end
@@ -57,9 +61,37 @@ function msgBridge.poll()
 		res=_http.fetch_async_get(h)
 	end
 
-	print(res.data)
+	-- print(res.data)
 
 	return minetest.parse_json(res.data)
 end
 
+
+local listCallbacks={}
+function msgBridge.register_on_msgs(callback)
+	if callback~=nil then
+		table.insert(listCallbacks,callback)
+	end
+end
+
+-- Execution periodique du polling pour consulter les messages entrants
+local elapsed=0
+minetest.register_globalstep(function(dtime)
+
+        elapsed=elapsed+dtime
+        if (elapsed>5) then
+                local res=poll()
+
+                if (res~=nil) and (res.result==true) then
+
+			for _,cb in pairs(listCallbacks) do
+				if (cb~=nil) then
+					cb(res.msgs)
+				end
+			end
+                end
+
+                elapsed=0
+        end
+end)
 
