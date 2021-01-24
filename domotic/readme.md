@@ -26,6 +26,16 @@ domotic.tour.set(num_start,num_end,color)|Set a color for the given LEDs
 domotic.tour.setHaut(color)|Set a color for the LEDs on the roof of the tower
 domotic.tour.setBas(color)|Set a color for the LEDs inside the tower
 
+**Colors are:**
+- "r" : Red
+- "g" : Green
+- "b" : Blue
+- "w" : White
+- "0" : Black (Zero)
+- ...
+
+***NB:*** See the arduino cattower project for more details. 
+
 ## Examples
 
 ### Manage external chat
