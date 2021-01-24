@@ -2,6 +2,8 @@
 
 This module is an interface to control our home equipments
 
+**Important:** If you want to use this module into another minetest mod, you must add **domotic** into the **"depends="** of the **mod.conf** file of the calling mod.
+
 ## Functions
 
 ### External chat functions
