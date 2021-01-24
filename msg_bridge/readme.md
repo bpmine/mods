@@ -1,5 +1,7 @@
 # msg_bridge MOD
 
+![GitHub Logo](screenshot.png)
+
 This module is an interface between minetest / lua mods and an external application
 
 It communicates with a local webservice like the one defined into wsrabbit repository.
