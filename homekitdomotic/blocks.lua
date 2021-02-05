@@ -40,8 +40,8 @@ minetest.register_globalstep(function(dtime)
 
         elapsed=elapsed+dtime
         if (elapsed>0.1) then
-		players=minetest.get_connected_players()
-		new_state=false
+		local players=minetest.get_connected_players()
+		local new_state=false
 		for _,p in pairs(players) do
 			pos=p:get_pos()
 			node = minetest.get_node(pos)
@@ -52,9 +52,9 @@ minetest.register_globalstep(function(dtime)
 
 		if (new_state~=state) then
 			if (new_state==true) then
-				domotic.hue.on("paul Bureau")
+				domotic.hue.on("bureau Paul")
 			else
-				domotic.hue.off("paul Bureau")
+				domotic.hue.off("bureau Paul")
 			end
 
 			state=new_state
