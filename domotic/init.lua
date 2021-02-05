@@ -25,8 +25,11 @@ end
 
 local listCbsChat={}
 function domotic.chat.register_on_msg(callback)
-	table.insert(listCbsChat,callback)
-end
+	if (callback~=nil) then
+		table.insert(listCbsChat,callback)
+
+	end
+end	
 
 domotic.hue={}
 function domotic.hue.set(name,state)
@@ -61,21 +64,36 @@ function domotic.tour.setBas(col)
 	msgBridge.send({typ='tour',num_start=26,num_end=33,col=col})
 end
 
+domotic.badge={}
+local lstCbsBadge={}
+domotic.badge.register_on_card_inserted=function(callback)
+	if (callback~=nil) then
+		table.insert(lstCbsBadge,callback)
+	end
+end
+
 
 local cbMsgsReception=function(msgs)
-	
 	for i,m in pairs(msgs) do
 		local event=minetest.parse_json(m.msg)
 
 		if event.typ=="chat" then
 			if event.dst~=nil and event.msg~=nil then
-				for cb in listCbsChat do
+				for _,cb in pairs(listCbsChat) do
 					cb(event.dst,event.msg)
 				end
 			end	
+		elseif event.typ=="badge" then
+			if event.id~=nil then
+				for _,cb in pairs(lstCbsBadge) do
+					cb(event.id)
+				end
+			end
 		end
 
 	end
-end	
-	
+end
+
+msgBridge.register_on_msgs(cbMsgsReception)
+
 
