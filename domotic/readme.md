@@ -14,6 +14,13 @@ Function | Description
 domotic.chat.send(msg)|Sends a message to the external chat
 domotic.chat.register_on_msg(callback)|Register a callback function to manage a message incoming from the external chat
 
+The callback must be like that:
+```lua
+local myFunc=function(dst,msg)
+  print("msg sent to dst");
+end
+```
+
 ### Control Hue Lights
 Function | Description
 -- | --
