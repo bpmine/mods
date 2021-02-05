@@ -38,6 +38,6 @@ local myFunction=function(msgs)
   end  
 end
 
-msgBridge.register_on_msgssend(myFunction);
+msgBridge.register_on_msgs(myFunction);
 ```
 
