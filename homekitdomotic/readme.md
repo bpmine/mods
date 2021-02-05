@@ -2,4 +2,4 @@
 
 Ce MOD permet au jeu minetest d'interragir avec la domotique.
 
-Il défini des blocs spéciaux dédié.
+Il défini des blocs spéciaux dédiés.
