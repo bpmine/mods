@@ -4,7 +4,8 @@
 -- en utilisant le MOD domotic
 --
 
-dofile(minetest.get_modpath("homekitdomotic") .. "/blocks.lua")
+dofile(minetest.get_modpath("homekitdomotic") .. "/dallehue.lua")
+dofile(minetest.get_modpath("homekitdomotic") .. "/tourminou.lua")
 
 domotic.chat.send('Start of minetest HOME KIT DOMOTIC MOD')
 

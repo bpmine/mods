@@ -79,7 +79,7 @@ local elapsed=0
 minetest.register_globalstep(function(dtime)
 
         elapsed=elapsed+dtime
-        if (elapsed>5) then
+        if (elapsed>1) then
                 local res=poll()
 
                 if (res~=nil) and (res.result==true) then
