@@ -35,6 +35,12 @@ minetest.register_node("homekitdomotic:dalle", {
 	
 	end,
 
+	after_place_node = function(pos, placer)
+
+                local meta = minetest.get_meta(pos)
+                meta:set_string("infotext","Clic droit pour configurer la dalle")
+        end,
+
 	on_rightclick = function(pos, node, player, itemstack, pointed_thing)
 
                 context[player:get_player_name()]=pos
@@ -63,7 +69,7 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
 
         if formname == "homekitdomotic:dalle_cfg" then
 
-                local pos=context[player:get_player_name()]
+		local pos=context[player:get_player_name()]
 
                 if (pos~=nil) then
                         local nme=fields["name"]
@@ -114,11 +120,13 @@ minetest.register_globalstep(function(dtime)
                                 meta=minetest.get_meta(pos)
                                 nme=meta:get_string("hue_name")
 
-                                if (nme~="") and (allumes[nme]==nil) then
-                                        allumes[nme]={old=false,new=true}
-                                else
-                                        allumes[nme].new=true
-                                end
+				if (nme~=nil) and (nme~="") then
+                                	if (allumes[nme]==nil) then
+                                        	allumes[nme]={old=false,new=true}
+                                	else
+                                        	allumes[nme].new=true
+                                	end
+				end	
                         end
                 end
 
