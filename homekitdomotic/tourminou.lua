@@ -5,6 +5,7 @@
 
 minetest.register_node("homekitdomotic:tour", {
         description = "Tour",
+	groups={cracky=3},
         is_ground_content = false,
         tile_images = {"hkd_blocks_wood.png", "hkd_blocks_wood.png", "hkd_blocks_tour.png",
                 "hkd_blocks_wood.png", "hkd_blocks_wood.png", "hkd_blocks_wood.png"},
