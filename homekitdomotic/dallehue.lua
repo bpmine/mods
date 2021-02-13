@@ -114,10 +114,10 @@ minetest.register_globalstep(function(dtime)
 
 		-- Detecte les dalles avec un joueur dessus
                 for _,p in pairs(players) do
-                        pos=p:get_pos()
-                        node = minetest.get_node(pos)
+                        local pos=p:get_pos()
+                        local node = minetest.get_node(pos)
                         if (node.name=="homekitdomotic:dalle") then
-                                meta=minetest.get_meta(pos)
+                                local meta=minetest.get_meta(pos)
                                 nme=meta:get_string("hue_name")
 
 				if (nme~=nil) and (nme~="") then
