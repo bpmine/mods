@@ -17,7 +17,7 @@ minetest.register_node("homekitdomotic:dalle", {
 	drawtype = "nodebox",
 	paramtype = "light",
 	is_ground_content = false,
-	tiles = {"hkd_blocks_dalle.png"},
+	tiles = {"hkd_blocks_dalle_hue.png"},
 	groups={cracky=3},
 	node_box = {
 		type = "fixed",
