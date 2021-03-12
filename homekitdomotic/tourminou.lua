@@ -18,12 +18,14 @@ minetest.register_node("homekitdomotic:tour", {
 	
 	on_rightclick = function(pos, node, player, itemstack, pointed_thing)
 
-                local formspec="size[4,3]"..
+                local formspec="size[4,4]"..
                 "label[0,0;PILOTAGE DE LA TOUR DE MINOU]"..
                 "label[0,0.5;En haut...]"..
 		"button[0,1;1,1;haut;Vert]button[1,1;1,1;haut;Rouge]button[2,1;1,1;haut;Bleu]"..
                 "label[0,2;En bas...]"..
-		"button[0,2.5;1,1;bas;Vert]button[1,2.5;1,1;bas;Rouge]button[2,2.5;1,1;bas;Bleu]"
+		"button[0,2.5;1,1;bas;Vert]button[1,2.5;1,1;bas;Rouge]button[2,2.5;1,1;bas;Bleu]"..
+		"label[0,3;Merci de ramener cet objet]"..
+		"label[0,3.5;où vous l'avez trouvé!]"
 
                 minetest.show_formspec(player:get_player_name(),"homekitdomotic:tour",formspec)
 

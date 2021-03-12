@@ -120,15 +120,15 @@ minetest.register_tool("francium:sword", {
 	groups = {sword = 1}
 })
 minetest.register_tool("francium:sword_pvp", {
-	description = "épée en francium(pvp)",
-	inventory_image = "francium_sword.png",
+	description = "épée en francium (pvp)",
+	inventory_image = "pvp_sword.png",
 	tool_capabilities = {
-		full_punch_interval = 0.0,
+		full_punch_interval = 0,
 		max_drop_level=1,
 		groupcaps={
 			snappy={times={[1]=1.90, [2]=0.90, [3]=0.30}, uses=2, maxlevel=3},
 		},
-		damage_groups = {fleshy=10},
+		damage_groups = {fleshy=1},
 	},
 	sound = {breaks = "default_tool_breaks"},
 	groups = {sword = 1}

@@ -170,7 +170,7 @@ function ranks.update_nametag(player)
 		end
 
 		player:set_nametag_attributes({
-			text = prefix..name,
+			text = "Francium@joueur: " .. prefix .. "] " .. name .. "",
 		})
 
 		return true
@@ -231,7 +231,7 @@ function ranks.chat_send(name, message)
 				if chat3_exists then
 					chat3.send(name, message, prefix.." ", "ranks")
 				else
-					minetest.chat_send_all(prefix.." <"..name.."> "..message)
+					minetest.chat_send_all("Francium@chat: " .. prefix.." "..name.."] "..message)
 					minetest.log("action", "CHAT: ".."<"..name.."> "..message)
 				end
 				return true
