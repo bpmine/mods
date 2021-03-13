@@ -1,6 +1,6 @@
-minetest.register_on_prejoinplayer(function(name, ip)
-	return "Francium@erreur:] Le serveur est en maintenance"
-end)
+--minetest.register_on_prejoinplayer(function(name, ip)
+--	return "Francium@erreur:] Le serveur est en maintenance"
+--end)
 
 
 minetest.register_on_joinplayer(function(player)
