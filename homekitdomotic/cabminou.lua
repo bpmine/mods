@@ -25,9 +25,9 @@ minetest.register_node("homekitdomotic:cabminou", {
                 "label[0,2;En bas...]"..
 				"button[0,2.5;1,1;bas;Vert]button[1,2.5;1,1;bas;Rouge]button[2,2.5;1,1;bas;Bleu]"..
 				"label[0,3.5;Animation en haut]"..
-				"button[0,4;1,1;animhaut;1]button[1,4;1,1;animhaut;2]button[2,4;1,1;animhaut;3]"
-				"label[0,5.5;Animation en bas]"..
-				"button[0,6;1,1;animbas;1]button[1,6;1,1;animbas;2]button[2,6;1,1;animbas;3]"
+				"button[0,4;1,1;animhaut;1]button[1,4;1,1;animhaut;2]button[2,4;1,1;animhaut;3]"..
+				"label[0,5;Animation en bas]"..
+				"button[0,5.5;1,1;animbas;1]button[1,5.5;1,1;animbas;2]button[2,5.5;1,1;animbas;3]"
 
                 minetest.show_formspec(player:get_player_name(),"homekitdomotic:cabminou",formspec)
 
@@ -60,7 +60,7 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
 			domotic.cabane.bas.setCol("b")
 		end
 
-		PROG_1_CABANE='D2LrAWLgAWLbAW*'
+		local PROG_1_CABANE='D2LrAWLgAWLbAW*'
 
 		if fields.animhaut=="1" then
 			domotic.cabane.haut.enableAnim(false)
