@@ -93,6 +93,9 @@ domotic.cabane.haut={}
 function domotic.cabane.haut.setLeds(num_start,num_end,col)
 	msgBridge.send({typ='cabh',num_start=num_start,num_end=num_end,col=col})
 end
+function domotic.cabane.haut.setCol(col)
+	msgBridge.send({typ='cabh',num_start=1,num_end=36,col=col})
+end
 
 function domotic.cabane.haut.setAnimProg(prog)
         msgBridge.send({typ='cabh',prog=prog})
@@ -105,6 +108,9 @@ end
 domotic.cabane.bas={}
 function domotic.cabane.bas.setLeds(num_start,num_end,col)
 	msgBridge.send({typ='cabb',num_start=num_start,num_end=num_end,col=col})
+end
+function domotic.cabane.bas.setCol(col)
+	msgBridge.send({typ='cabb',num_start=1,num_end=36,col=col})
 end
 
 function domotic.cabane.bas.setAnimProg(prog)

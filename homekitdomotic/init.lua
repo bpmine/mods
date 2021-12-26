@@ -5,8 +5,8 @@
 --
 
 dofile(minetest.get_modpath("homekitdomotic") .. "/dallehue.lua")
---dofile(minetest.get_modpath("homekitdomotic") .. "/blockhue.lua")
 dofile(minetest.get_modpath("homekitdomotic") .. "/tourminou.lua")
+dofile(minetest.get_modpath("homekitdomotic") .. "/cabminou.lua")
 
 domotic.chat.send('Start of minetest HOME KIT DOMOTIC MOD')
 
