@@ -64,6 +64,58 @@ function domotic.tour.setBas(col)
 	msgBridge.send({typ='tour',num_start=26,num_end=33,col=col})
 end
 
+function domotic.tour.setAnimProg(prog)
+        msgBridge.send({typ='tour',prog=prog})
+end
+
+function domotic.tour.enableAnim(enable)
+        msgBridge.send({typ='tour',anim=enable})
+end
+
+function domotic.tour.setWdgTime(time)
+        msgBridge.send({typ='tour',wdg_time=time})
+end
+
+function domotic.tour.setWdgEnable(enable)
+        msgBridge.send({typ='tour',wdg_enable=enable})
+end
+
+domotic.cabane={}
+function domotic.cabane.setWdgTime(time)
+        msgBridge.send({typ='cabane',wdg_time=time})
+end
+
+function domotic.cabane.setWdgEnable(enable)
+        msgBridge.send({typ='cabane',wdg_enable=enable})
+end
+
+domotic.cabane.haut={}
+function domotic.cabane.haut.setLeds(num_start,num_end,col)
+	msgBridge.send({typ='cabh',num_start=num_start,num_end=num_end,col=col})
+end
+
+function domotic.cabane.haut.setAnimProg(prog)
+        msgBridge.send({typ='cabh',prog=prog})
+end
+
+function domotic.cabane.haut.enableAnim(enable)
+        msgBridge.send({typ='cabh',anim=enable})
+end
+
+domotic.cabane.bas={}
+function domotic.cabane.bas.setLeds(num_start,num_end,col)
+	msgBridge.send({typ='cabb',num_start=num_start,num_end=num_end,col=col})
+end
+
+function domotic.cabane.bas.setAnimProg(prog)
+        msgBridge.send({typ='cabb',prog=prog})
+end
+
+function domotic.cabane.bas.enableAnim(enable)
+        msgBridge.send({typ='cabb',anim=enable})
+end
+
+
 domotic.badge={}
 local lstCbsBadge={}
 domotic.badge.register_on_card_inserted=function(callback)
