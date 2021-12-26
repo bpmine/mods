@@ -72,9 +72,9 @@ domotic.hue.off("Lampe TV")
 domotic.hue.set("Lampe 4",true)
 ```
 
-### Manage cat(s tower
+### Manage cat's tower
 
-The following example lights on green the uppper part of the cat's tower
+The following example lights on green the upper part of the cat's tower
 Then it lights on red the lower part
 
 ```lua
