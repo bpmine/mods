@@ -68,7 +68,6 @@ minetest.register_node("homekitdomotic:dalle", {
 minetest.register_on_player_receive_fields(function(player, formname, fields)
 
         if formname == "homekitdomotic:dalle_cfg" then
-
 		local pos=context[player:get_player_name()]
 
                 if (pos~=nil) then
@@ -79,10 +78,10 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
 
                         meta=minetest.get_meta(pos)
                         meta:set_string("hue_name",nme)
-			meta:set_string("infotext","Monter dessus pour allumer "..nme)
+			--meta:set_string("infotext","Monter dessus pour allumer "..nme)
 
                         context[player:get_player_name()]=nil
-                end
+		end
         end
 end)
 
@@ -119,6 +118,7 @@ minetest.register_globalstep(function(dtime)
                         if (node.name=="homekitdomotic:dalle") then
                                 local meta=minetest.get_meta(pos)
                                 nme=meta:get_string("hue_name")
+				--minetest.chat_send_all(nme)
 
 				if (nme~=nil) and (nme~="") then
                                 	if (allumes[nme]==nil) then
