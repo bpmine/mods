@@ -30,21 +30,23 @@ end
 		on_equip = function(player)
 					local privs = minetest.get_player_privs(player:get_player_name())				
 					privs.fly = true
+					privs.protection_bypass = true
 					minetest.set_player_privs(player:get_player_name(), privs)
 				  end,
 				  
 		on_unequip = function(player)
 					local privs = minetest.get_player_privs(player:get_player_name())
 					privs.fly = nil
+					privs.protection_bypass = nil
 					minetest.set_player_privs(player:get_player_name(), privs)
 				  end,
 	})
 	armor:register_armor("3d_armor_flyswim:fort", {
 		description = "Cape du fort",
 		inventory_image = "3d_armor_flyswim_fort_inv.png",
-		groups = {armor_capes=2, physics_speed=1.5, armor_use=1},
-		armor_groups = {fleshy=1},
-		damage_groups = {cracky=1, snappy=1, choppy=1, crumbly=1, level=1},
+		groups = {armor_capes=2, armor_heal=100, physics_speed=1.5, armor_use=0, armor_water=1},
+		armor_groups = {fleshy=100},
+		--damage_groups = {cracky=1, snappy=1, choppy=1, crumbly=1, level=1},
 		on_equip = function(player)
 					local privs = minetest.get_player_privs(player:get_player_name())				
 					privs.fly = true
@@ -56,6 +58,24 @@ end
 					local privs = minetest.get_player_privs(player:get_player_name())
 					privs.fly = nil
 					minetest.set_player_privs(player:get_player_name(), privs)
+				end,
+ 	})
+	armor:register_armor("3d_armor_flyswim:key", {
+                description = "test",
+                inventory_image = "3d_armor_flyswim_demo_cape_inv.png",
+                groups = {armor_capes=1, physics_speed=1.5, armor_use=1000},
+                armor_groups = {fleshy=5},
+                damage_groups = {cracky=3, snappy=3, choppy=2, crumbly=2, level=1},
+                on_equip = function(player)
+                                        local privs = minetest.get_player_privs(player:get_player_name())
+                                        privs.protection_bypass = true
+                                        minetest.set_player_privs(player:get_player_name(), privs)
+                                  end,
+
+                on_unequip = function(player)
+                                        local privs = minetest.get_player_privs(player:get_player_name())
+                                        privs.protection_bypass = nil
+                                        minetest.set_player_privs(player:get_player_name(), privs)
+                                  end,
+        })
 					--player:override_day_night_ratio(nil)
-				  end,
-	})
