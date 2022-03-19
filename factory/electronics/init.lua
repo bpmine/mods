@@ -1,6 +1,0 @@
-factory.require("electronics/cable")
-factory.require("electronics/device")
-factory.require("electronics/combustion_generator")
-factory.require("electronics/electronic_furnace")
-factory.require("electronics/battery")
-factory.require("electronics/electronic_grinder")
